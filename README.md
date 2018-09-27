@@ -1,0 +1,2 @@
+# getcookies
+Firefox Cookies Hijack
