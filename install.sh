@@ -1,6 +1,14 @@
 # Install dependencies for GetCookies
 # Author: https://github.com/thelinuxchoice/getcookies
 
+
+if [[ "$(id -u)" -ne 0 ]]; then
+    printf "\e[1;77mPlease, run this program as root!\n\e[0m"
+    exit 1
+fi
+
+
+
 printf "\e[1;77m[\e[0m\e[1;92m+\e[0m\e[1;77m] Updating and downloading Mingw-w64\n"
 apt-get update;
 apt-get install -y mingw-w64;
